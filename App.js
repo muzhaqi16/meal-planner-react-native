@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler'
-import DrawerNavigator from './src/navigation/DrawerNavigator';
+import SwitchNavigator from './src/navigation/SwitchNavigator';
 
 import { createAppContainer } from 'react-navigation';
 
 
 
-export default createAppContainer(DrawerNavigator);
+export default createAppContainer(SwitchNavigator);
