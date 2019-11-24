@@ -14,7 +14,7 @@ class HomeScreen extends React.Component {
                         size={35} />
                 </View>
 
-            )
+            ),
         }
     };
     render() {
