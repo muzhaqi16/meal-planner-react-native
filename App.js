@@ -3,6 +3,4 @@ import SwitchNavigator from './src/navigation/SwitchNavigator';
 
 import { createAppContainer } from 'react-navigation';
 
-
-
 export default createAppContainer(SwitchNavigator);

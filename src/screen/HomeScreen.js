@@ -1,40 +1,143 @@
 import React from 'react'
-import { Text, View, Button, StatusBar } from 'react-native'
+import { Text, View, Button, StatusBar, Image, TouchableHighlight, StyleSheet, ScrollView, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
+import { AppStyles } from '../styles/AppStyles';
+import { MealCard } from '../styles/MealCard';
 
 class HomeScreen extends React.Component {
-    static navigationOptions = ({ navigation }) => {
-        return {
-            title: 'Home',
-            headerLeft: () => (
-                <View style={{ marginLeft: 25 }}>
-                    <Icon
-                        onPress={navigation.openDrawer}
-                        name="ios-menu"
-                        size={35} />
-                </View>
-
-            ),
-        }
+    static navigationOptions = {
+        header: null,
     };
+    renderCategories = ({ item }) => (
+        <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)'>
+            <View style={MealCard.container}>
+                <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
+                <Text style={MealCard.title}>{item.title}</Text>
+            </View>
+        </TouchableHighlight>
+    );
     render() {
+        const categories = [{
+            categoryId: 1,
+            title: "Calories",
+            measureUnit: "Kcal",
+            amount: "75%",
+            color: "green",
+            icon: "apple"
+        }, {
+            categoryId: 2,
+            title: "Fats",
+            measureUnit: "Fats",
+            amount: "25%",
+            color: "red",
+            icon: "hamburger"
+        }, {
+            categoryId: 3,
+            title: "Carbs",
+            measureUnit: "Kcal",
+            amount: "75%",
+            color: "green",
+            icon: "pasta"
+        }, {
+            categoryId: 4,
+            title: "Protein",
+            measureUnit: "Kcal",
+            amount: "75%",
+            color: "green",
+            icon: "muscle"
+        }]
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={styles.container}>
                 <StatusBar
                     barStyle="dark-content"
                     backgroundColor="#FFFFFF"
                 />
-                <Text> Home Screen </Text>
-                <Button
-                    title="Go to Details"
-                    onPress={() => this.props.navigation.navigate('Details')}
-                />
-                <Button
-                    title="Open Drawer"
-                    onPress={() => this.props.navigation.openDrawer()}
-                />
+                <View style={styles.headerContainer}>
+                    <View>
+                        <Text style={styles.h1}>Dashboard</Text>
+                        <Text style={styles.p}>Welcome back, <Text style={styles.link}>Artan</Text></Text>
+                    </View>
+                    <Image
+                        style={styles.image}
+                        source={{ uri: 'https://source.unsplash.com/user/iamthibault' }}
+                    />
+                </View>
+                <View style={{ alignSelf: "stretch", marginBottom: 20, marginTop: 10 }}>
+                    <View style={styles.headerContainer}>
+                        <Text style={{ fontSize: AppStyles.fontSize.title }}>Todays Meals</Text>
+                        <Text style={styles.link}>Track Food ></Text>
+                    </View>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
+                            <View style={MealCard.container}>
+                                <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/mggbox' }} />
+                                <Text style={MealCard.title}>Breakfast</Text>
+                            </View>
+                        </TouchableHighlight>
+                        <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
+                            <View style={MealCard.container}>
+                                <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
+                                <Text style={MealCard.title}>Lunch</Text>
+                            </View>
+                        </TouchableHighlight>
+                        <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
+                            <View style={MealCard.container}>
+                                <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
+                                <Text style={MealCard.title}>Dinner</Text>
+                            </View>
+                        </TouchableHighlight>
+                    </ScrollView>
+                </View>
+                <View style={{ alignSelf: "stretch", flex: 1 }}>
+                    <View style={styles.headerContainer}>
+                        <Text style={{ fontSize: AppStyles.fontSize.title }}>Progress Last Weeks</Text>
+                        <Text style={styles.link}>Current ></Text>
+                    </View>
+                    <FlatList
+                        vertical
+                        showsVerticalScrollIndicator={false}
+                        numColumns={2}
+                        data={categories}
+                        renderItem={this.renderCategories}
+                        keyExtractor={item => `${item.categoryId}`}
+                    />
+                </View>
             </View>
         )
     }
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        padding: 10
+    },
+    link: {
+        color: AppStyles.colors.blue,
+        fontSize: AppStyles.fontSize.normal
+    },
+    headerContainer: {
+        alignSelf: "stretch",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginBottom: 10
+    },
+    h1: {
+        fontSize: AppStyles.fontSize.header,
+        color: AppStyles.colors.title
+    },
+    p: {
+        fontSize: AppStyles.fontSize.normal,
+        color: AppStyles.colors.text
+    },
+    image: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        resizeMode: 'cover'
+    }
+});
 export default HomeScreen;
+
+console.disableYellowBox = true;

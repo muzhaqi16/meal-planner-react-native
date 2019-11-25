@@ -7,7 +7,7 @@ import FormTextInput from "../components/FormTextInput";
 import { logoImage, constants } from '../config/constants';
 import strings from "../config/strings";
 import { AppStyles } from "../styles/AppStyles";
-import { handleLogin } from '../utils/index';
+import { handleLogin, storeData } from '../utils/index';
 
 class LoginScreen extends React.Component {
     static navigationOptions = {
@@ -51,7 +51,10 @@ class LoginScreen extends React.Component {
         this.setState({ loading: true })
         handleLogin(this.state.email, this.state.password).then(data => {
             if (!data.error) {
-                this.props.navigation.navigate("Home")
+                storeData('authToken', data.authToken).then(
+                    this.props.navigation.navigate("Home")
+                )
+
             }
         }).catch(error =>
             this.setState({

@@ -13,9 +13,11 @@ export const AppStyles = {
         width: "80%"
     },
     fontSize: {
-        title: 30,
+        header: 28,
+        title: 22,
         content: 20,
-        normal: 18
+        normal: 18,
+        smaller: 16
     },
     fontHeight: {
         title: 38,
@@ -41,6 +43,9 @@ export const AppStyles = {
     borderRadius: {
         main: 25,
         small: 5
+    },
+    spaceBlock: {
+        paddingBottom: 20
     },
     logo: {
         flex: 1,

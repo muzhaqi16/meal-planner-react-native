@@ -27,6 +27,9 @@ const DrawerNavigator = createDrawerNavigator({
         screen: LogoutScreen,
     }
 }, {
+    drawerPosition: 'left',
+    // initialRouteName: 'Main',
+    drawerWidth: 250,
     contentComponent: (props) => (
         <SafeAreaView style={styles.container}>
             <View style={{ height: 100, alignItems: 'center', justifyContent: 'center' }}>
