@@ -10,7 +10,7 @@ class HomeScreen extends React.Component {
         header: null,
     };
     renderCategories = ({ item }) => (
-        <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)'>
+        <TouchableHighlight onPress={() => { }}>
             <View style={MealCard.container}>
                 <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
                 <Text style={MealCard.title}>{item.title}</Text>
@@ -63,26 +63,26 @@ class HomeScreen extends React.Component {
                         source={{ uri: 'https://source.unsplash.com/user/iamthibault' }}
                     />
                 </View>
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
                     <View style={{ alignSelf: "stretch", marginBottom: 20, marginTop: 10 }}>
                         <View style={styles.headerContainer}>
                             <Text style={{ fontSize: AppStyles.sizes.title }}>Todays Meals</Text>
                             <Text style={styles.link}>Track Food ></Text>
                         </View>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                            <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
+                            <TouchableHighlight onPress={() => this.onPressRecipe()}>
                                 <View style={MealCard.container}>
                                     <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/mggbox' }} />
                                     <Text style={MealCard.title}>Breakfast</Text>
                                 </View>
                             </TouchableHighlight>
-                            <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
+                            <TouchableHighlight onPress={() => this.onPressRecipe()}>
                                 <View style={MealCard.container}>
                                     <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
                                     <Text style={MealCard.title}>Lunch</Text>
                                 </View>
                             </TouchableHighlight>
-                            <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
+                            <TouchableHighlight onPress={() => this.onPressRecipe()}>
                                 <View style={MealCard.container}>
                                     <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
                                     <Text style={MealCard.title}>Dinner</Text>
@@ -90,7 +90,7 @@ class HomeScreen extends React.Component {
                             </TouchableHighlight>
                         </ScrollView>
                     </View>
-                    <View style={{ alignSelf: "stretch", flex: 1, minHeight: 500 }}>
+                    <View style={{ alignSelf: "stretch", flex: 1 }}>
                         <View style={styles.headerContainer}>
                             <Text style={{ fontSize: AppStyles.sizes.title }}>Progress Last Weeks</Text>
                             <Text style={styles.link}>Current ></Text>
