@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, KeyboardAvoidingView, StyleSheet, View, StatusBar, Text } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Button from "../components/Button";
 import FormTextInput from "../components/FormTextInput";
@@ -104,6 +105,7 @@ class LoginScreen extends React.Component {
                         returnKeyType="next"
                         onBlur={this.handleEmailBlur}
                         error={emailError}
+                        autoCapitalize='none'
                         // `blurOnSubmit` causes a keyboard glitch on
                         // Android when we want to manually focus the
                         // next input.
@@ -118,6 +120,7 @@ class LoginScreen extends React.Component {
                         returnKeyType="done"
                         onBlur={this.handlePasswordBlur}
                         error={passwordError}
+                        autoCapitalize='none'
                     />
                     {this.state.error && <Text style={AppStyles.errorText}>{this.state.error}</Text>}
                     <Button
@@ -125,6 +128,9 @@ class LoginScreen extends React.Component {
                         onPress={this.handleLoginPress}
                         disabled={!email || !password || loading}
                     />
+                    <Icon.Button name="facebook" onPress={this.loginWithFacebook} solid style={{ alignSelf: "center" }}>
+                        Login with Facebook
+                    </Icon.Button>
                 </View>
             </KeyboardAvoidingView>
         );

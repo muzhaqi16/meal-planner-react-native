@@ -3,7 +3,7 @@ import { Alert, ActivityIndicator, Keyboard, KeyboardAvoidingView, StyleSheet, T
 import { AppStyles } from '../styles/AppStyles'
 import { Button, FormTextInput } from '../components';
 import { strings, constants } from "../config";
-import { register } from '../utils';
+import { register, storeData } from '../utils';
 
 export default class SignupScreen extends Component {
     state = {
@@ -54,19 +54,19 @@ export default class SignupScreen extends Component {
         this.setState({ passwordTouched: true });
     };
     handleSignUp() {
+        Keyboard.dismiss();
         const { email, username, password } = this.state;
         const user = {
-            email, user_name: username, password
+            email, user_name: username, password, first_name: "Artan", last_name: "Muzhaqi"
         }
 
         this.setState({ loading: true });
 
         register(user).then(data => {
             if (!data.error) {
-                console.log(data)
-            }
-            else {
-                console.log(data)
+                storeData('authToken', data.authToken).then(
+                    this.props.navigation.navigate("Home")
+                )
             }
         }).catch(error => {
             this.setState({
