@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     textInput: {
-        fontSize: AppStyles.fontSize.normal,
+        fontSize: AppStyles.sizes.body,
         height: 40,
         ...Platform.select({
             ios: {

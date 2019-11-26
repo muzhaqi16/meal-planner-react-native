@@ -1,4 +1,5 @@
-import colors from './colors'
+import colors from './colors';
+import sizes from './sizes';
 import { Platform } from 'react-native';
 
 export const AppStyles = {
@@ -12,13 +13,7 @@ export const AppStyles = {
         marginBottom: 150,
         width: "80%"
     },
-    fontSize: {
-        header: 28,
-        title: 22,
-        content: 20,
-        normal: 18,
-        smaller: 16
-    },
+    sizes,
     fontHeight: {
         title: 38,
         content: 28,

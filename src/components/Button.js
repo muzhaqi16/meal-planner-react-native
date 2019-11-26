@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         color: AppStyles.colors.white,
         textAlign: "center",
         height: AppStyles.fontHeight.normal,
-        fontSize: AppStyles.fontSize.normal,
+        fontSize: AppStyles.sizes.base,
     }
 });
 

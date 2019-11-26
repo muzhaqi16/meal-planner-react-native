@@ -21,7 +21,13 @@ const colors = {
     greenBlue: "#00aea8",
     placeholder: "#a0a0a0",
     background: "#f2f2f2",
-    blue: "#3293fe"
+    blue: "#3293fe",
+    accent: "#F3534A",
+    primary: "#0AC4BA",
+    secondary: "#2BDA8E",
+    tertiary: "#FFE358",
+    gray: "#9DA3B4",
+    gray2: "#C5CCD6",
 };
 
 export default colors;

@@ -8,7 +8,7 @@ const SCREEN_WIDTH = width < height ? width : height;
 const recipeNumColums = 2;
 // item size
 const RECIPE_ITEM_HEIGHT = 170;
-const RECIPE_ITEM_MARGIN = 20;
+const RECIPE_ITEM_MARGIN = 10;
 
 // 2 photos per width
 export const MealCard = StyleSheet.create({
@@ -18,7 +18,7 @@ export const MealCard = StyleSheet.create({
         marginRight: RECIPE_ITEM_MARGIN,
         marginTop: 10,
         width: (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums,
-        height: RECIPE_ITEM_HEIGHT + 45,
+        height: RECIPE_ITEM_HEIGHT + 40,
         borderColor: '#cccccc',
         borderWidth: 0.5,
         borderRadius: 15,
@@ -32,7 +32,7 @@ export const MealCard = StyleSheet.create({
         resizeMode: 'cover'
     },
     title: {
-        fontSize: AppStyles.fontSize.normal,
+        fontSize: AppStyles.sizes.body,
         textAlign: 'center',
         color: AppStyles.colors.subtitle,
         marginTop: 10,

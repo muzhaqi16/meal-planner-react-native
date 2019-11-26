@@ -3,6 +3,7 @@ import { Text, View, Button, StatusBar, Image, TouchableHighlight, StyleSheet, S
 import Icon from 'react-native-vector-icons/Ionicons';
 import { AppStyles } from '../styles/AppStyles';
 import { MealCard } from '../styles/MealCard';
+import { metrics } from '../config';
 
 class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -62,46 +63,48 @@ class HomeScreen extends React.Component {
                         source={{ uri: 'https://source.unsplash.com/user/iamthibault' }}
                     />
                 </View>
-                <View style={{ alignSelf: "stretch", marginBottom: 20, marginTop: 10 }}>
-                    <View style={styles.headerContainer}>
-                        <Text style={{ fontSize: AppStyles.fontSize.title }}>Todays Meals</Text>
-                        <Text style={styles.link}>Track Food ></Text>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <View style={{ alignSelf: "stretch", marginBottom: 20, marginTop: 10 }}>
+                        <View style={styles.headerContainer}>
+                            <Text style={{ fontSize: AppStyles.sizes.title }}>Todays Meals</Text>
+                            <Text style={styles.link}>Track Food ></Text>
+                        </View>
+                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                            <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
+                                <View style={MealCard.container}>
+                                    <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/mggbox' }} />
+                                    <Text style={MealCard.title}>Breakfast</Text>
+                                </View>
+                            </TouchableHighlight>
+                            <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
+                                <View style={MealCard.container}>
+                                    <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
+                                    <Text style={MealCard.title}>Lunch</Text>
+                                </View>
+                            </TouchableHighlight>
+                            <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
+                                <View style={MealCard.container}>
+                                    <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
+                                    <Text style={MealCard.title}>Dinner</Text>
+                                </View>
+                            </TouchableHighlight>
+                        </ScrollView>
                     </View>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                        <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
-                            <View style={MealCard.container}>
-                                <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/mggbox' }} />
-                                <Text style={MealCard.title}>Breakfast</Text>
-                            </View>
-                        </TouchableHighlight>
-                        <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
-                            <View style={MealCard.container}>
-                                <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
-                                <Text style={MealCard.title}>Lunch</Text>
-                            </View>
-                        </TouchableHighlight>
-                        <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe()}>
-                            <View style={MealCard.container}>
-                                <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/brookelark' }} />
-                                <Text style={MealCard.title}>Dinner</Text>
-                            </View>
-                        </TouchableHighlight>
-                    </ScrollView>
-                </View>
-                <View style={{ alignSelf: "stretch", flex: 1 }}>
-                    <View style={styles.headerContainer}>
-                        <Text style={{ fontSize: AppStyles.fontSize.title }}>Progress Last Weeks</Text>
-                        <Text style={styles.link}>Current ></Text>
+                    <View style={{ alignSelf: "stretch", flex: 1, minHeight: 500 }}>
+                        <View style={styles.headerContainer}>
+                            <Text style={{ fontSize: AppStyles.sizes.title }}>Progress Last Weeks</Text>
+                            <Text style={styles.link}>Current ></Text>
+                        </View>
+                        <FlatList
+                            vertical
+                            showsVerticalScrollIndicator={false}
+                            numColumns={2}
+                            data={categories}
+                            renderItem={this.renderCategories}
+                            keyExtractor={item => `${item.categoryId}`}
+                        />
                     </View>
-                    <FlatList
-                        vertical
-                        showsVerticalScrollIndicator={false}
-                        numColumns={2}
-                        data={categories}
-                        renderItem={this.renderCategories}
-                        keyExtractor={item => `${item.categoryId}`}
-                    />
-                </View>
+                </ScrollView>
             </View>
         )
     }
@@ -110,11 +113,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        padding: 10
+        padding: 10,
     },
     link: {
         color: AppStyles.colors.blue,
-        fontSize: AppStyles.fontSize.normal
+        fontSize: AppStyles.sizes.body
     },
     headerContainer: {
         alignSelf: "stretch",
@@ -124,11 +127,11 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     h1: {
-        fontSize: AppStyles.fontSize.header,
+        fontSize: AppStyles.sizes.h1,
         color: AppStyles.colors.title
     },
     p: {
-        fontSize: AppStyles.fontSize.normal,
+        fontSize: AppStyles.sizes.body,
         color: AppStyles.colors.text
     },
     image: {

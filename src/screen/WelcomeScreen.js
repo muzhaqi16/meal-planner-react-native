@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         width: AppStyles.containerWidth.smaller
     },
     title: {
-        fontSize: AppStyles.fontSize.title,
+        fontSize: AppStyles.sizes.h1,
         fontWeight: "bold",
         color: AppStyles.colors.tint,
         marginTop: 20,
