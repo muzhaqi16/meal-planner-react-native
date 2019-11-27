@@ -17,6 +17,9 @@ class HomeScreen extends React.Component {
             </View>
         </TouchableHighlight>
     );
+    onPressRecipe = item => {
+        this.props.navigation.push('Details', { item });
+    };
     render() {
         const categories = [{
             categoryId: 1,
@@ -70,7 +73,7 @@ class HomeScreen extends React.Component {
                             <Text style={styles.link}>Track Food ></Text>
                         </View>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                            <TouchableHighlight onPress={() => this.onPressRecipe()}>
+                            <TouchableHighlight onPress={() => this.onPressRecipe('Breakfast')}>
                                 <View style={MealCard.container}>
                                     <Image style={MealCard.photo} source={{ uri: 'https://source.unsplash.com/user/mggbox' }} />
                                     <Text style={MealCard.title}>Breakfast</Text>
